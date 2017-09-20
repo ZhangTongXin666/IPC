@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.kys_31.study_demo">
+
+    <application
+        android:name="demoone.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="demoThree.ProviderActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service android:name="demoone.CustomService"
+            android:process=":myService"/>
+        <service android:name="demoTwo.MessengerService"
+            android:process=":MessengerService"/>
+        <service android:name=".BookManagerService"
+            android:process=":BookManagerService"/>
+        <provider android:name="demoThree.BookProvider"
+            android:authorities="com.example.kys_31.study_demo.BookProvider"
+            android:permission="com.example.PROVIDER"
+            android:process=":BookProvider"/>
+        <service android:name="demofour.BinderPoolService"
+            android:process=":BinderPoolService"/>
+    </application>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
+
+    <permission android:name="com.example.kys_31.study_demo.permission.ACCESS_BOOK_SERVICE"
+        android:protectionLevel="normal"/>
+    <uses-permission android:name="com.example.kys_31.study_demo.permission.ACCESS_BOOK_SERVICE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
